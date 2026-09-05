@@ -147,15 +147,15 @@ export default function Navbar({ logoUrl, sc: scEn, scAr = {} }: NavbarProps) {
 
             {/* Desktop CTA */}
             <div className={`flex items-center gap-5 ${isAr ? "flex-row-reverse" : ""}`}>
-            <a
-              href="tel:+9613581180"
-              className={`flex items-center gap-2 text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
-                scrolled ? "text-gray-600 hover:text-[#3C4BA1]" : "text-white/70 hover:text-white"
-              }`}
-            >
-              <Phone size={15} />
-              <span dir="ltr">+961 3 581 180</span>
-            </a>
+              <a
+                href="tel:+9613581180"
+                className={`flex items-center gap-2 text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
+                  scrolled ? "text-gray-600 hover:text-[#3C4BA1]" : "text-white/70 hover:text-white"
+                }`}
+              >
+                <Phone size={15} />
+                <span dir="ltr">+961 3 581 180</span>
+              </a>
               <a
                 href="#contact"
                 onClick={(e) => { e.preventDefault(); handleClick("#contact"); }}
@@ -208,7 +208,7 @@ export default function Navbar({ logoUrl, sc: scEn, scAr = {} }: NavbarProps) {
                 className="flex items-center gap-2 px-4 py-3 text-gray-600 text-sm font-medium"
               >
                 <Phone size={15} />
-                <span dir="ltr">+961 6 610061</span>
+                <span dir="ltr">+961 3 581 180</span>
               </a>
               <a
                 href="#contact"
