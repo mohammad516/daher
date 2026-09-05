@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Daher Website Models ──────────────────────────────────────
+
+// Hero section slides (headline / highlight / sub-text / background image)
+model DaherHeroSlide {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  headline  String
+  highlight String
+  sub       String
+  image     String @default("")
+  order     Int    @default(0)
+}
+
+// Service cards on the Services section
+model DaherService {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  desc     String
+  features String[] // one bullet per entry
+  image    String   @default("") // Cloudinary URL
+  order    Int      @default(0)
+}
+
+// Client testimonials on the Testimonials section
+model DaherTestimonial {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  quote String
+  name  String
+  role  String
+  order Int    @default(0)
+}
+
+// Client logo items on the Clients section
+model DaherClient {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  name  String @default("")
+  logo  String @default("") // Cloudinary URL
+  order Int    @default(0)
+}
+
+// Partner logo items on the Partners section
+model DaherPartner {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  name  String @default("")
+  logo  String @default("") // Cloudinary URL
+  order Int    @default(0)
+}
+
+// Maintenance / insurance plan cards on the KeyOfferings section
+model DaherMaintenancePlan {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  features String[] // one bullet per entry
+  order    Int      @default(0)
+}
+
+// Project portfolio items on the Projects page
+model DaherProject {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  category String   @default("residential") // residential | commercial | industrial
+  image    String   @default("")
+  images   String[] // additional gallery images
+  desc     String   @default("")
+  order    Int      @default(0)
+}
+
+// Key-value store for miscellaneous site strings
+model SiteContent {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  key   String @unique
+  value String
+}
+
+// Translation cache for API translations
+model TranslationCache {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  key      String   @unique // Hash of the english text
+  original String   // Original english text
+  ar       String   // Translated arabic text
+  createdAt DateTime @default(now())
+}
